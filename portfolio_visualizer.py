@@ -49,31 +49,31 @@ quatity = 0
 buy_price = 0
 sell_price = 0
 profit_cal = sell_price - buy_price
-profit_stat = []
-
-num_2 = -1
+profit = 0
 for d in tsmc_revised_new:
-    num_2 += 1
-    if portfolio != 0 and portfolio == 1:
-        if d[num_2][1] == 0 or d[num_2][1] == 1:
+    if quatity == 1:
+        if d[1] == 0 or d[1] == 1:
             continue
-        elif d[num_2][1] == -1:
+        elif d[1] == -1: # i think there's some problem in line 57
             quatity = -1
-            sell_price = d[num_2][0]
-            profit
-            if 
-    elif portfolio != 0 and portfolio == -1:
-        continue
-        
-    else:
-        if d[num_2][1] == 0:
+            sell_price = d[0]
+            profit += profit_cal
+    elif quatity == -1:
+        if d[1] == 0 or d[1] == -1:
             continue
-        elif d[num_2][1] == 1:
+        elif d[1] == 1:
+            quatity = 1
+            buy_price = d[0]
+            profit += profit_cal        
+    elif quatity == 0:
+        if d[1] == 0:
+            continue
+        elif d[1] == 1:
             quatity += 1
-            buy_price = d[num_2][0]
-        elif d[num_2][1] == -1:
+            buy_price = d[0]
+        elif d[1] == -1:
             quatity -= 1
-            sell_price = d[num_2][0]
-
+            sell_price = d[0]
+print(profit)
 
 
